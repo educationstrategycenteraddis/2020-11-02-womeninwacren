@@ -5,9 +5,9 @@ layout: workshop      # DON'T CHANGE THIS.
 # https://carpentries.github.io/workshop-template/customization/index.html
 carpentry: "dc"    # what kind of Carpentry (must be either "lc" or "dc" or "swc")
 venue: "AA TVET"        # brief name of the institution that hosts the workshop without address (e.g., "Euphoric State University")
-address: "https://us04web.zoom.us/j/4714574439?pwd=VkFldzlBTWVSY1k2bkhFa1RHU29EQT09"      # full street address of workshop (e.g., "Room A, 123 Forth Street, Blimingen, Euphoria"), videoconferencing URL, or online
+address: "et"      # full street address of workshop (e.g., "Room A, 123 Forth Street, Blimingen, Euphoria"), videoconferencing URL, or online
 country: "Africa"      # lowercase two-letter ISO country code such as "fr" (see https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) for the institution that hosts the workshop
-language: "English"     # lowercase two-letter ISO language code such as "fr" (see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) for the
+language: "en"     # lowercase two-letter ISO language code such as "fr" (see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) for the
 latitude: "45"        # decimal latitude of workshop venue (use https://www.latlong.net/)
 longitude: "-1"       # decimal longitude of the workshop venue (use https://www.latlong.net)
 humandate: "Nov 02-06, 2020"    # human-readable dates for the workshop (e.g., "Feb 17-18, 2020")
@@ -31,8 +31,13 @@ And run 'make workshop-check' *before* committing to make sure that changes are 
 {% endcomment %}
 
 
-{% comment %}
+{{% comment %}
+8< ============= For a workshop delete from here =============
+For a workshop please delete the following block until the next dashed-line
+{% endcomment %}
 
+{% comment %}
+8< ============================= until here ==================
 {% endcomment %}
 
 
@@ -60,6 +65,23 @@ It looks like you are setting up a website for a Software Carpentry curriculum b
 {% endunless %}
 {% endif %}
 
+{% comment %}
+EVENTBRITE
+
+This block includes the Eventbrite registration widget if
+'eventbrite' has been set in the header.  You can delete it if you
+are not using Eventbrite, or leave it in, since it will not be
+displayed if the 'eventbrite' field in the header is not set.
+{% endcomment %}
+{% if page.eventbrite %}
+<iframe
+  src="https://www.eventbrite.com/tickets-external?eid={{page.eventbrite}}&ref=etckt"
+  frameborder="0"
+  width="100%"
+  height="280px"
+  scrolling="auto">
+</iframe>
+{% endif %}
 
 
 <h2 id="general">General Information</h2>
@@ -292,25 +314,10 @@ SURVEYS - DO NOT EDIT SURVEY LINKS
 {% comment %}
 SCHEDULE
 
-Show the workshop's schedule.
-
-Small changes to the schedule can be made by modifying the
-`schedule.html` found in the `_includes` folder for your
-workshop type (`swc`, `lc`, or `dc`). Edit the items and
-times in the table to match your plans. You may also want to
-change 'Day 1' and 'Day 2' to be actual dates or days of the
-week.
-
-For larger changes, a blank template for a 4-day workshop
-(useful for online teaching for instance) can be found in
-`_includes/custom-schedule.html`. Add the times, and what
-you will be teaching to this file. You may also want to add
-rows to the table if you wish to break down the schedule
-further. To use this custom schedule here, replace the block
-of code below the Schedule `<h2>` header below with
-`{% include custom-schedule.html %}`.
+Show the workshop's schedule.  Edit the items and times in the table
+to match your plans.  You may also want to change 'Day 1' and 'Day
+2' to be actual dates or days of the week.
 {% endcomment %}
-
 <h2 id="schedule">Schedule</h2>
 
 {% if site.carpentry == "swc" %}
@@ -320,6 +327,7 @@ of code below the Schedule `<h2>` header below with
 {% elsif site.carpentry == "lc" %}
 {% include lc/schedule.html %}
 {% endif %}
+
 
 <hr/>
 
